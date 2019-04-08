@@ -1,4 +1,11 @@
 <?php
+    /*
+    CST-126 Blog Project 1.0
+    Module - Registration Page v1.0
+    Jackie Adair
+    7 April 2019
+    PHP for the registration page for this blog.
+    */
     $servername = "localhost";
     $username = "cst126_blog";
     $password = "cst126_blog";
