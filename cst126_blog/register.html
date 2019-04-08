@@ -2,12 +2,20 @@
 <html>
     <head>
         <title>CST126 Blog Project</title>
-        <link rel="stylesheet" type="text/css" href="site.css">
     </head>
-    <body class="mainPage">
-        <div class="loginModule">
+    <style type="text/css">
+        div {
+            margin: auto;
+            width: 35%;
+            border: 1px solid blue;
+            border-radius: 25px;
+            padding: 10px;
+        }
+    </style>
+    <body>
+        <div>
             <form action="processRegistration.php" method="POST">
-                <table class="regModule">
+                <table>
                     <tr>
                         <td>First Name</td>
                         <td><input type="text" name="fName" /></td>
@@ -18,10 +26,10 @@
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td><input type="password" name="passswd" /></td>
+                        <td><input type="password" name="passwd" /></td>
                     </tr>
                     <tr>
-                        <td class="submitBtn" colspan="2"><input type="submit" /></td>
+                        <td align="center" colspan="2"><input type="submit" /></td>
                     </tr>
                 </table>
             </form>

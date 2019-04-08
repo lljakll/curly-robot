@@ -2,7 +2,7 @@
     $servername = "localhost";
     $username = "cst126_blog";
     $password = "cst126_blog";
-    $database = "users";
+    $database = "cst126_blog";
     $port = "3306";
 
     $conn = new mysqli($servername, $username, $password, $database, $port);
@@ -19,7 +19,12 @@
 
     $sqlQuery = "INSERT INTO users (f_name, l_name, passwd) VALUES ('$firstName', '$lastName', '$password')";
 
-    if ($con->query($sql) === TRUE)
+    if ($conn->query($sqlQuery) === TRUE)
     {
-        echo $firstName . " " . $lastName . " was registered at " . date('H:i') . " on " . date('S F Y');
+        echo $firstName . " " . $lastName . " was registered at " . date('H:i') . " on " . date('jS F Y') . ".";
+    }else {
+        echo "Error: " . $sql . "<br />" . $con->error;
+    }
+    
+    $con->close();
 ?>
