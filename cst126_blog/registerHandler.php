@@ -29,26 +29,32 @@
     $userPass2 = $_POST["userPass2"];
 
     if($userFirst == "" || $userFirst == NULL){
+        // first name is blank, error
         echo "The First Name is a required field and cannot be blank.<br /><br />";
         echo "<a href=\"register.html\">Back</a>";
     }
     else if($userLast == "" || $userLast == NULL){
+        // last name is blank, error
         echo "The Last Name is a required field and cannot be blank.<br /><br />";
         echo "<a href=\"register.html\">Back</a>";
     }
     else if($userName == "" || $userName == NULL){
+        // username is blank, error
         echo "The username is a required field and cannot be blank.<br /><br />";
         echo "<a href=\"register.html\">Back</a>";
     }
     else if($userEmail == "" || $userEmail == NULL){
+        // email is blank, error
         echo "The E-Mail address is a required field and cannot be blank.<br /><br />";
         echo "<a href=\"register.html\">Back</a>";
     }
     else if($userPass == "" || $userPass == NULL || $userPass != $userPass2){
+        // password is blank or doesn't match, error
         echo "The passwords do not match or is blank.  Please try again.<br /><br />";
         echo "<a href=\"register.html\">Back</a>";
     }
     else{
+        // query db for duplicate email or username
         $check = "SELECT id FROM users WHERE USERNAME = ? OR EMAIL = ?";
         $stmt = $db->prepare($check);
         $stmt->bind_param('ss', $userName, $userEmail);
@@ -60,6 +66,7 @@
             echo "<a href=\"register.html\">Back</a>";
         }
         else{
+            // process registration
             $query = "INSERT INTO users (FIRST_NAME, LAST_NAME, USERNAME, EMAIL, PASSWORD) VALUES ('$userFirst', '$userLast', '$userName', '$userEmail', '$userPass')";
 
             if ($db->query($query) === TRUE) 
@@ -73,5 +80,6 @@
         }
     }
 
+    // close the db
     $db->close();
 ?>
