@@ -1,10 +1,11 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
 --
---    CST-126 Blog Project 1.0
---    Module - Database v1.0
---    Jackie Adair
---    7 April 2019
---    Databaes and users table for the registration page for this blog.
-
+-- Host: localhost:3306
+-- Generation Time: Apr 15, 2019 at 01:34 AM
+-- Server version: 5.7.24-log
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,12 +32,42 @@ USE `cst126_blog`;
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-  `id` int(11) DEFAULT NULL,
-  `f_name` varchar(25) NOT NULL,
-  `l_name` varchar(25) NOT NULL,
-  `passwd` varchar(1024) NOT NULL,
-  `privileges` varchar(255) NOT NULL
+  `id` int(11) NOT NULL,
+  `FIRST_NAME` varchar(25) NOT NULL,
+  `LAST_NAME` varchar(25) NOT NULL,
+  `USERNAME` varchar(25) NOT NULL,
+  `EMAIL` varchar(50) NOT NULL,
+  `PASSWORD` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `FIRST_NAME`, `LAST_NAME`, `USERNAME`, `EMAIL`, `PASSWORD`) VALUES
+(13, 'Jackie', 'Adair', 'jadair', 'jak@trilixium.com', 'jadair'),
+(14, 'Michele', 'Adair', 'madair', 'michele@trilixium.com', 'madair'),
+(15, 'Bailey', 'Adair', 'badair', 'bailey@trilixium.com', 'badair');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
