@@ -1,9 +1,6 @@
 <?php
-    $dbservername = "localhost";
-    $dbusername = "activity1";
-    $dbpassword = "activity1";
-    $dbname = "activity1";
-    $dbport = "3306";
+    require_once('myfuncs.php');
+
     $userName = $_POST["userName"];
     $userPass = $_POST["userPass"];
 
@@ -14,14 +11,7 @@
         echo "User Password is required";
     }
     else{
-        // Create the connection to the database
-        $db = new mysqli($dbservername, $dbusername, $dbpassword, $dbname, $dbport);
-
-        // check connection
-        if ($db->connect_error)
-        {
-            die("Connection Failed: " . $db->connect_error);
-        }
+        $db = dbConnect();
 
         $query = "SELECT id FROM users WHERE USERNAME = ? AND PASSWORD = ?";
         $stmt = $db->prepare($query);
@@ -41,7 +31,6 @@
             echo "Login Successful!";
         }
 
-        $result->free();
         $db->close();
 
     }
