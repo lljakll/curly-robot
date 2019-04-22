@@ -1,67 +1,59 @@
 <?php
 
     /*
-    CST-126 Blog Project 1.0
-    Module - Registration Page v2.0
+    CST-126 Activity 3
+    Module - Login Page v3.0
     Jackie Adair
-    14 April 2019
-    PHP for the registration page for this blog.
+    20 April 2019
+    PHP for the login page for this blog.
     */
 
-    $dbservername = "localhost";
-    $dbusername = "cst126_blog";
-    $dbpassword = "cst126_blog";
-    $dbname = "cst126_blog";
-    $dbport = "3306";
+    require_once('myfuncs.php');
+
     $userName = $_POST["userName"];
     $userPass = $_POST["userPass"];
 
-    
     if($userName == "" || $userName == NULL){
-        // Check for a submitted username
-        echo "Username is required.<br /><br />";
-        echo "<a href=\"login.html\">Back</a>";
+        $message = "Username is required.<br /><br />
+            <a href=\"login.html\">Back</a>";
+        include('loginFailed.php');
     }
     else if($userPass == "" || $userPass == NULL){
-        // Check for a submitted password
-        echo "User Password is required.<br /><br />";
-        echo "<a href=\"login.html\">Back</a>";
+        $message = "User Password is required.<br /><br />
+            <a href=\"login.html\">Back</a>";
+        include('loginFailed.php');
     }
     else{
-        // Create the connection to the database
-        $db = new mysqli($dbservername, $dbusername, $dbpassword, $dbname, $dbport);
+        $db = dbConnect();
 
-        // check connection
-        if ($db->connect_error)
-        {
-            die("Connection Failed: " . $db->connect_error);
-        }
-
-        // Check db for matching username and password
-        $query = "SELECT id FROM users WHERE USERNAME = ? AND PASSWORD = ?";
+        $query = "SELECT ID FROM users WHERE USERNAME = ? AND PASSWORD = ?";
         $stmt = $db->prepare($query);
         $stmt->bind_param('ss', $userName, $userPass);
+
         $stmt->execute();
 
         $stmt->store_result();
+        $stmt->bind_result($ID);
 
-        // check if a row was returned.  if less than 1 then fail, more than 1, error, exactly
-        // 1, successful login
         if($stmt->num_rows < 1){
-            echo "Login Failed, no user found or password incorrect.<br /><br />";
-            echo "<a href=\"login.html\">Back</a>";
+            $message = "Login Failed, no user found or password incorrect.<br /><br />
+                <a href=\"login.html\">Back</a>";
+            include('loginFailed.php');
         }
         else if ($stmt->num_rows > 1){
-            echo "Login Failed, Multiple usernames found. Contact the site admin.<br /><br />";
-            echo "<a href=\"login.html\">Back</a>";
+            $message =  "Login Failed, Multiple usernames found. Contact the site admin.<br /><br />
+                <a href=\"login.html\">Back</a>";
+            include('loginFailed.php');
+            
         }
         else{
-            echo "Login Successful!<br /><br />";
+            $stmt->fetch();
+            saveUserId($ID);
+
+            include('loginResponse.php');
             echo "<a href=\"index.html\">Home</a>";
         }
 
-        // release result var and close the database
-        $result->free();
         $db->close();
 
     }

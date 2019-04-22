@@ -1,25 +1,14 @@
 <?php
     /*
-    CST-126 Blog Project 1.0
-    Module - Registration Page v2.0
+    CST-126 Activitiy 3
+    Module - Registration Page v3.0
     Jackie Adair
-    14 April 2019
+    20 April 2019
     PHP for the registration page for this blog.
     */
+    require_once('myfuncs.php');
 
-    $dbservername = "localhost";
-    $dbusername = "cst126_blog";
-    $dbpassword = "cst126_blog";
-    $dbname = "cst126_blog";
-    $dbport = "3306";
-
-    $db = new mysqli($dbservername, $dbusername, $dbpassword, $dbname, $dbport);
-
-    // check connection
-    if ($db->connect_error)
-    {
-        die("Connection Failed: " . $db->connect_error);
-    }
+    $db = dbConnect();
 
     $userFirst = $_POST["userFirst"];
     $userLast = $_POST["userLast"];
