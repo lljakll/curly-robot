@@ -2,9 +2,9 @@
     
     function dbConnect(){
         $dbservername = "localhost";
-        $dbusername = "activity1";
-        $dbpassword = "activity1";
-        $dbname = "activity1";
+        $dbusername = "cst126_blog";
+        $dbpassword = "cst126_blog";
+        $dbname = "cst126_blog";
         $dbport = "3306";
 
         $db = new mysqli($dbservername, $dbusername, $dbpassword, $dbname, $dbport);
@@ -20,6 +20,11 @@
     function saveUserId($id){
         session_start();
         $_SESSION["USER_ID"] = $id;
+    }
+
+    function clearUserId(){
+        session_start();
+        $_SESSION["USER_ID"] = NULL;
     }
 
     function getUserId(){

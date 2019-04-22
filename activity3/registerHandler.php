@@ -1,6 +1,6 @@
 <?php
     /*
-    CST-126 Activitiy 3
+    CST-126 Blog Project 1.0
     Module - Registration Page v3.0
     Jackie Adair
     20 April 2019

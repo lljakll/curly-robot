@@ -9,6 +9,7 @@
         <title>Who Am I</title>
     </head>
     <body>
-        <h2>Hello, My User ID is: <?php echo " " . getUserId(); ?></h2></br>
+        <h2>Hello, My User ID is: <?php echo " " . getUserId(); ?></h2><br /><br />
+        <a href="index.html">Main Menu</a>
     </body>
 </html>

@@ -1,5 +1,6 @@
 <?php
-    // CST-126 Activity 3
+
+    // CST-126 Blog Project 1.0
     // Login Failed Response Module version 1.0
     // Jackie Adair
     // 20 April 2019

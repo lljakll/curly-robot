@@ -1,8 +1,6 @@
 .baseForm {
     margin: auto;
     width: 25%;
-    border: 1px solid blue;
-    border-radius: 25px;
     padding: 10px;
 }
 
@@ -14,3 +12,6 @@ a {
     text-align: center;
 }
 
+textarea {
+    resize: none;
+}
