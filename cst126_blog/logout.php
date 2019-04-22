@@ -1,4 +1,11 @@
 <?php
+
+    // CST-126 Blog Project 1.0
+    // Logout Module version 1.0
+    // Jackie Adair
+    // 20 April 2019
+    // Logout functions
+
     require_once 'myfuncs.php';
 
     if(getUserId()){
