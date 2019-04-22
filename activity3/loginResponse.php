@@ -11,5 +11,6 @@
     <head></head>
     <body>
         <h2>Login was sucessful: <?php echo "" . $userName ?></h2>
+        <a href="whoAmI.php">Who Am I</a>
     </body>
 </html>

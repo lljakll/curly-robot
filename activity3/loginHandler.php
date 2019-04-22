@@ -2,10 +2,10 @@
 
     /*
     CST-126 Activity 3
-    Module - Reg Page v3.0
+    Module - Login Page v3.0
     Jackie Adair
     20 April 2019
-    PHP for the registration page for this blog.
+    PHP for the login page for this blog.
     */
 
     require_once('myfuncs.php');
@@ -26,13 +26,14 @@
     else{
         $db = dbConnect();
 
-        $query = "SELECT id FROM users WHERE USERNAME = ? AND PASSWORD = ?";
+        $query = "SELECT ID FROM users WHERE USERNAME = ? AND PASSWORD = ?";
         $stmt = $db->prepare($query);
         $stmt->bind_param('ss', $userName, $userPass);
-//        $stmt->bind_results($id);
+
         $stmt->execute();
 
         $stmt->store_result();
+        $stmt->bind_result($ID);
 
         if($stmt->num_rows < 1){
             $message = "Login Failed, no user found or password incorrect.<br /><br />
@@ -46,6 +47,9 @@
             
         }
         else{
+            $stmt->fetch();
+            saveUserId($ID);
+
             include('loginResponse.php');
             echo "<a href=\"index.html\">Home</a>";
         }
