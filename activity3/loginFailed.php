@@ -10,6 +10,6 @@
 <html>
     <head></head>
     <body>
-        <h2><?php $message ?></h2>
+        <h2><?php echo $message; ?></h2>
     </body>
 </html>
