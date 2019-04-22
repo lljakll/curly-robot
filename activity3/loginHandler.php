@@ -14,12 +14,14 @@
     $userPass = $_POST["userPass"];
 
     if($userName == "" || $userName == NULL){
-        echo "Username is required.<br /><br />";
-        echo "<a href=\"login.html\">Back</a>";
+        $message = "Username is required.<br /><br />
+            <a href=\"login.html\">Back</a>";
+        include('loginFailed.php');
     }
     else if($userPass == "" || $userPass == NULL){
-        echo "User Password is required.<br /><br />";
-        echo "<a href=\"login.html\">Back</a>";
+        $message = "User Password is required.<br /><br />
+            <a href=\"login.html\">Back</a>";
+        include('loginFailed.php');
     }
     else{
         $db = dbConnect();
@@ -33,15 +35,18 @@
         $stmt->store_result();
 
         if($stmt->num_rows < 1){
-            echo "Login Failed, no user found or password incorrect.<br /><br />";
-            echo "<a href=\"login.html\">Back</a>";
+            $message = "Login Failed, no user found or password incorrect.<br /><br />
+                <a href=\"login.html\">Back</a>";
+            include('loginFailed.php');
         }
         else if ($stmt->num_rows > 1){
-            echo "Login Failed, Multiple usernames found. Contact the site admin.<br /><br />";
-            echo "<a href=\"login.html\">Back</a>";
+            $message =  "Login Failed, Multiple usernames found. Contact the site admin.<br /><br />
+                <a href=\"login.html\">Back</a>";
+            include('loginFailed.php');
+            
         }
         else{
-            echo "Login Successful!<br /><br />";
+            include('loginResponse.php');
             echo "<a href=\"index.html\">Home</a>";
         }
 

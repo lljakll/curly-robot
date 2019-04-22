@@ -1,5 +1,5 @@
 <?php
-
+    
     function dbConnect(){
         $dbservername = "localhost";
         $dbusername = "activity1";
