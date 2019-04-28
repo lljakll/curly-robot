@@ -49,6 +49,8 @@
 
             $message =  "Login Sucess!<br /><br />";
             include('messenger.php');
+            $users = getAllUsers();
+            include('_displayUsers.php');
         }
 
         $db->close();
