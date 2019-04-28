@@ -5,8 +5,10 @@
     // 25 April 2019
     // General Site Functions
 
-    session_start();
-
+    if(session_status() == PHP_SESSION_NONE){
+        session_start();
+    }
+    
     function dbConnect(){
         $dbservername = "localhost";
         $dbusername = "cst126_blog";

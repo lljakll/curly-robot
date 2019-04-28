@@ -1,0 +1,3 @@
+if user is logged in, do not allow relogin or registration unless change
+
+set all forms to retain input if errors are thrown.

@@ -6,6 +6,7 @@
     // Login page for the blog site.
  
     require_once("header.php");
+    require_once("myfuncs.php");
 ?>
 
 <html>
