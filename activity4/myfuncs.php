@@ -9,14 +9,18 @@
         session_start();
     }
     
+  
+    //mysqli_real_connect($con, "jackies-cst126-mysql-server.mysql.database.azure.com", "lljakll@jackies-cst126-mysql-server", {your_password}, {your_database}, 3306);
+
     function dbConnect(){
+        $db=mysqli_init();
         $dbservername = "jackies-cst126-mysql-server.mysql.database.azure.com";
-        $dbusername = "cst126_blog";
-        $dbpassword = "cst126_blog";
+        $dbusername = "lljakll@jackies-cst126-mysql-server";
+        $dbpassword = "Kc3nTu2$#@!";
         $dbname = "cst126_blog";
         $dbport = "3306";
 
-        $db = new mysqli($dbservername, $dbusername, $dbpassword, $dbname, $dbport);
+        mysqli_real_connect($db, $dbservername, $dbusername, $dbpassword, $dbname, $dbport);
 
         if ($db->connect_error)
         {
