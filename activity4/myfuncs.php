@@ -10,7 +10,7 @@
     }
     
     function dbConnect(){
-        $dbservername = "localhost";
+        $dbservername = "jackies-cst126-mysql-server.mysql.database.azure.com";
         $dbusername = "cst126_blog";
         $dbpassword = "cst126_blog";
         $dbname = "cst126_blog";
