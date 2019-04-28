@@ -6,6 +6,7 @@
     // Handler methods for login page
 
     require_once('myfuncs.php');
+    require_once('utility.php');
 
     $userName = $_POST["userName"];
     $userPass = $_POST["userPass"];
@@ -47,9 +48,9 @@
             $stmt->fetch();
             saveUser($ID, $userName);
 
-            $message =  "Login Sucess!<br /><br />";
-            include('messenger.php');
             $users = getAllUsers();
+            $message = "Login Sucess!<br /><br />";
+            include('messenger.php');
             include('_displayUsers.php');
         }
 
