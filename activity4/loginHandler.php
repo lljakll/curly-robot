@@ -14,12 +14,16 @@
     if($userName == "" || $userName == NULL){
         $message = "Username is required.<br /><br />
             <a href=\"login.php\">Back</a>";
+        require_once("header.php");
         include('messenger.php');
+        require_once("footer.php");
     }
     else if($userPass == "" || $userPass == NULL){
         $message = "User Password is required.<br /><br />
             <a href=\"login.php\">Back</a>";
+        require_once("header.php");
         include('messenger.php');
+        require_once("footer.php");
     }
     else{
         $db = dbConnect();
@@ -36,12 +40,16 @@
         if($stmt->num_rows < 1){
             $message = "Login Failed, no user found or password incorrect.<br /><br />
                 <a href=\"login.php\">Back</a>";
+            require_once("header.php");
             include('messenger.php');
+            require_once("footer.php");
         }
         else if ($stmt->num_rows > 1){
             $message =  "Login Failed, Multiple duplicate usernames found. Contact the site admin.<br /><br />
                 <a href=\"login.php\">Back</a>";
+            require_once("header.php");
             include('messenger.php');
+            require_once("footer.php");
             
         }
         else{
@@ -50,13 +58,14 @@
 
             $users = getAllUsers();
             $message = "Login Sucess!<br /><br />";
+            require_once("header.php");
             include('messenger.php');
             include('_displayUsers.php');
+            require_once("footer.php");
         }
 
         $db->close();
 
     }
-
 
 ?>

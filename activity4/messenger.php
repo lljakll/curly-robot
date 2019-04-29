@@ -5,18 +5,8 @@
     // 25 April 2019
     // Response to login post
  
-    require_once("header.php");
     require_once("myfuncs.php");
-?>
 
-<!DOCTYPE html>
-<html>
-    <head></head>
-    <body>
-        <h2><?php echo $message; ?></h2>
-    </body>
-</html>
+    echo "<h2>" . $message . "</h2>";
 
-<?php
-    require_once("footer.php");
 ?>

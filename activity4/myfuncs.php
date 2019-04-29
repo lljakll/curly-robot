@@ -8,15 +8,22 @@
     if(session_status() == PHP_SESSION_NONE){
         session_start();
     }
+    if(!isset($_SESSION["USER_ID"])){
+        $_SESSION["USER_ID"] = NULL;
+        $_SESSION["USER_NAME"] = NULL;
+    }
     
-  
-    //mysqli_real_connect($con, "jackies-cst126-mysql-server.mysql.database.azure.com", "lljakll@jackies-cst126-mysql-server", {your_password}, {your_database}, 3306);
-
     function dbConnect(){
         $db=mysqli_init();
+// Comment for digitalocean or local/uncomment for azure deployment
         $dbservername = "jackies-cst126-mysql-server.mysql.database.azure.com";
         $dbusername = "lljakll@jackies-cst126-mysql-server";
-        $dbpassword = "Kc3nTu2$#@!";
+        $dbpassword = "j@cK13$#@!";
+
+// Comment for azure/uncomment for local or digitalocean
+//        $dbservername = "localhost";
+//        $dbusername = "cst126_blog";
+//        $dbpassword = "cst126_blog";
         $dbname = "cst126_blog";
         $dbport = "3306";
 

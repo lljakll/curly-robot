@@ -15,3 +15,10 @@ a {
 textarea {
     resize: none;
 }
+
+table {
+    border: solid;
+    size: 2px;
+    background-color: blue;
+    padding: 10;
+}

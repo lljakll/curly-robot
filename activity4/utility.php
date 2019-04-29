@@ -22,12 +22,9 @@
         $stmt->store_result();
     
         while($stmt->fetch()){
-            $users[$index] = array($id,$first,$last);
-            ++$index;            
+            $users[$index] = array($id, $first, $last);
+            ++$index;  
         }
-
-    
-        $result->free();
     
         $db->close();
         return $users;
