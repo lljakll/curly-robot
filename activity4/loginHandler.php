@@ -28,14 +28,14 @@
     else{
         $db = dbConnect();
 
-        $query = "SELECT ID FROM users WHERE USERNAME = ? AND PASSWORD = ?";
+        $query = "SELECT ID, user_role FROM users WHERE USERNAME = ? AND PASSWORD = ?";
         $stmt = $db->prepare($query);
         $stmt->bind_param('ss', $userName, $userPass);
 
         $stmt->execute();
 
         $stmt->store_result();
-        $stmt->bind_result($ID);
+        $stmt->bind_result($ID, $userRole);
 
         if($stmt->num_rows < 1){
             $message = "Login Failed, no user found or password incorrect.<br /><br />
@@ -54,7 +54,7 @@
         }
         else{
             $stmt->fetch();
-            saveUser($ID, $userName);
+            saveUser($ID, $userName, $userRole);
 
             $users = getAllUsers();
             $message = "Login Sucess!<br /><br />";

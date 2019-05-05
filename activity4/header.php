@@ -34,13 +34,35 @@
                     <?php
                         if(!getUserId()){
                             echo "<li><a href=\"login.php\">Login</a></li>";
+                            echo "<li><a href=\"register.php\">Register</a></li>";
                         }
                         else{
                             echo "<li><a href=\"logout.php\">Logout</a></li>";                           
                         }
                     ?>
-                    <li><a href="register.php">Register</a></li>
-                    <li><a href="newPost.php">Post</a></li>
+                    <?php
+                        switch(getUserRole()){
+                            case 0:
+                            break;
+                            case 1:
+                                echo "<li><a href=\"newPost.php\">Post</a></li>";
+                            break;
+                            case 2:
+                                echo "<li><a href=\"newPost.php\">Post</a></li>";
+                            break;
+                            case 3:
+                                echo "<li><a href=\"newPost.php\">Post</a></li>";
+                            break;
+                            case 4:
+                                echo "<li><a href=\"postAdmin.php\">Post Admin</a></li>";
+                                echo "<li><a href=\"newPost.php\">Post</a></li>";
+                            break;
+                            case 5:
+                                echo "<li><a href=\"userAdmin.php\">User Admin</a></li>";
+                                echo "<li><a href=\"newPost.php\">Post</a></li>";
+                            break;
+                        }
+                    ?>
                 </ul>
             </div>
         </nav>

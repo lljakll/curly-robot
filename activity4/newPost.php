@@ -25,10 +25,16 @@
                         <td><textarea name="postBody" rows="10" cols="50" placeholder="Post Content"></textarea></td>
                     </tr>
                     <tr>
-                        <td colspan="2" align="center"><input type="submit" value="Submit" /></td>
+                        <td><textarea name="postTags" rows="2" cols="50" placeholder="#TAGS"></textarea></td>
                     </tr>
                     <tr>
-                        <td colspan="2" align="center"><a href="index.html">Main Menu</a></td>
+                        <td align="center"><input type="submit" name="btnSave" value="SAVE" /></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="submit" name="btnPost" value="POST" /></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><a href="index.html">Main Menu</a></td>
                     </tr>
                 </table>
             </form>

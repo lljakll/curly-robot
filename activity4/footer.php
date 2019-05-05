@@ -28,6 +28,8 @@
         <footer class="container-fluid text-center">
             <p>Copyright &copy 2019 Trilixium Software</p>
             <!-- DEBUG TOKEN: COMMENT OUT BEFORE DEPLOYMENT -->
-            <?php echo "-DEBUG-<br />--SESSION INFO--<br />User ID: " . $_SESSION["USER_ID"] . "<br />User Name: " . $_SESSION["USER_NAME"]; ?>
+            <?php echo "-DEBUG-<br />--SESSION INFO--<br />User ID: " . $_SESSION["USER_ID"] . "<br />User Name: " . 
+                $_SESSION["USER_NAME"] . "<br />User Role: " . 
+                $_SESSION["USER_ROLE"]; ?>
     </body>
 </html>

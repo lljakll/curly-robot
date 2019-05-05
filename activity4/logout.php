@@ -6,7 +6,6 @@
     // Logout functions
 
     require_once('myfuncs.php');
-    require_once("header.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,8 +16,10 @@
     <body>
         <?php
             if(getUserId()){
-                echo "<h2>User: " . getUserName() . " has been logged out.</h2><br />";
-                clearUser();
+                $userName = getUserName();
+                clearuser();
+                require_once("header.php");
+                echo "<h2>" . $userName . " has been logged out.</h2><br />";
             }
             else{
                 echo "<h2>You are not logged in, in fact, I'm not entirely sure how you got here.  Please let the site admin know there is a bug that needs squashing</h2>";

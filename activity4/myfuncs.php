@@ -16,14 +16,14 @@
     function dbConnect(){
         $db=mysqli_init();
 // Comment for digitalocean or local/uncomment for azure deployment
-        $dbservername = "jackies-cst126-mysql-server.mysql.database.azure.com";
-        $dbusername = "lljakll@jackies-cst126-mysql-server";
-        $dbpassword = "j@cK13$#@!";
+//        $dbservername = "jackies-cst126-mysql-server.mysql.database.azure.com";
+//        $dbusername = "lljakll@jackies-cst126-mysql-server";
+//        $dbpassword = "j@cK13$#@!";
 
 // Comment for azure/uncomment for local or digitalocean
-//        $dbservername = "localhost";
-//        $dbusername = "cst126_blog";
-//        $dbpassword = "cst126_blog";
+        $dbservername = "localhost";
+        $dbusername = "cst126_blog";
+        $dbpassword = "cst126_blog";
         $dbname = "cst126_blog";
         $dbport = "3306";
 
@@ -37,16 +37,67 @@
         return $db;
     }
 
-    function saveUser($id, $userName){
+    // Create Post
+    function createPost($userID, $postSubject, $postBody, $posted, $tags){
+        $db = dbConnect();
+        $query = "INSERT INTO posts (userID, postSubject, postBody, posted, postDateTime, postTags) VALUES ('$userID', '$postSubject', '$postBody', '$posted', now(), '$tags')";
+
+        if ($db->query($query) === TRUE){
+            return "Successfully ";
+        }
+        else{
+            return "Error: " . $query . "<br />" . $db->error;
+        }
+    }
+
+    // Review Post
+    function getAllPosts(){
+        $db = dbConnect();
+        $query = "SELECT * FROM posts";
+
+        $posts = array();
+        $index = 0;
+
+        $stmt = $db->prepare($query);
+        $stmt->bind_result($id, $userID, $postSubject, $postBody, $language,
+            $posted, $postDateTime, $postTags, $reviewedByID, $reviewed);
+        $stmt->execute();
+
+        $stmt->store_result();
+
+        while($stmt->fetch()){
+            $posts[$index] = array($id, $userID, $postSubject, $postBody, $language,
+            $posted, $postDateTime, $postTags, $reviewedByID, $reviewed);
+            ++$index;
+        }
+
+        $db->close();
+        return $posts;
+
+    }
+
+    // Update Post
+    function updatePost(){
+
+    }
+
+    // Delete Post
+    function deletePost(){
+
+    }
+
+    function saveUser($id, $userName, $role){
 
         $_SESSION["USER_ID"] = $id;
         $_SESSION["USER_NAME"] = $userName;
+        $_SESSION["USER_ROLE"] = $role;
     }
 
     function clearUser(){
 
         $_SESSION["USER_ID"] = NULL;
         $_SESSION["USER_NAME"] = NULL;
+        $_SESSION["USER_ROLE"] = NULL;
     }
 
     function getUserId(){
@@ -55,5 +106,9 @@
 
     function getUserName(){
         return $_SESSION["USER_NAME"];
+    }
+
+    function getUserRole(){
+        return $_SESSION["USER_ROLE"];
     }
 ?>
