@@ -12,7 +12,7 @@
         $_SESSION["USER_ID"] = NULL;
         $_SESSION["USER_NAME"] = NULL;
     }
-    
+
     function dbConnect(){
         $db=mysqli_init();
 // Comment for digitalocean or local/uncomment for azure deployment
@@ -73,6 +73,33 @@
 
         $db->close();
         return $posts;
+
+    }
+    function getPost($id){
+        $db = dbConnect();
+        $query = "SELECT * FROM posts WHERE id = $id";
+
+        $post = array();
+        $index = 0;
+
+        $stmt = $db->prepare($query);
+        $stmt->bind_result($id, $userID, $postSubject, $postBody, $language,
+            $posted, $postDateTime, $postTags, $reviewedByID, $reviewed);
+        $stmt->execute();
+
+        $stmt->store_result();
+
+        $stmt->fetch();
+        $post = array($id, $userID, $postSubject, $postBody, $language,
+            $posted, $postDateTime, $postTags, $reviewedByID, $reviewed);
+
+        $db->close();
+        return $post;
+
+    }
+
+    // update review flag
+    function updateReview($id){
 
     }
 
