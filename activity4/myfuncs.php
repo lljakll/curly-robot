@@ -112,6 +112,27 @@
     function deletePost(){
 
     }
+    
+    function getUserFromID($id){
+        $db = dbConnect();
+        $query = "SELECT id, FIRST_NAME, LAST_NAME, USERNAME, EMAIL, user_role FROM users WHERE id = $id";
+
+        $user = array();
+        $index = 0;
+
+        $stmt = $db->prepare($query);
+        $stmt->bind_result($id, $firstName, $lastName, $userName, $email, $role);
+        $stmt->execute();
+
+        $stmt->store_result();
+
+        $stmt->fetch();
+        $user = array($id, $firstName, $lastName, $userName, $email, $role);
+
+        $db->close();
+
+        return $user;
+    }
 
     function saveUser($id, $userName, $role){
 

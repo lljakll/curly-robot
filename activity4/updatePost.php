@@ -8,11 +8,9 @@
     require_once('myfuncs.php');
     require_once('header.php');
 
-    $id = $_POST["postID"];
-    $review = $_POST["reviewStatus"];
     $db = dbConnect();
 
-    $query = "UPDATE posts SET reviewed AS $review WHERE id = $id";
+    $query = "UPDATE posts SET reviewed AS true WHERE id = " . $id;
 
     if ($db->query($query) === TRUE){
         return "Success ";
@@ -20,6 +18,8 @@
     else{
         return "Fail: " . $query . "<br />" . $db->error;
     }
+    
+    $db->close();
 
     require_once('footer.php');
 

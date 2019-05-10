@@ -4,6 +4,10 @@
     // Jackie Adair
     // 28 April 2019
     // fragment page to display users
+    // ARRAYS
+    // $user = array($id, $firstName, $lastName, $userName, $email, $role);
+    // $post = array($id, $userID, $postSubject, $postBody, $language,
+    //               $posted, $postDateTime, $postTags, $reviewedByID, $reviewed);
 
     $id = $_GET['id'];
 
@@ -11,35 +15,34 @@
     require_once('myfuncs.php');
     
     $post = getPost($id);
-
-    echo "Author: " . $post[1];
+    $user = getUserFromID($post[1]);
     ?>
-    <br />
-    <textarea name="postSubject" rows="1" cols="50"><?php echo $post[2]; ?></textarea>;
-    <br />
-    <textarea name="postBody" rows="10" cols="50"><?php echo $post[3]; ?></textarea>;
-    <?php
-    
-    echo "<br /><br />Date/Time: " . $post[6] . "<br /><br />Reviewed: ";
 
-            echo "<form method=\"POST\" action=\"updatePost.php\">";
-            echo "<input type=\"checkbox\" name=\"reviewStatus\" value=\" ";
-            $postID = $id;
+    <form method="POST" action="updatePost.php">
+        Author : <?php echo $user[1] .  " " . $user[2]; ?>
+        <input type="hidden" name="id" value="<?php echo $post[0]; ?>" />
+        <br />
+        <textarea name="postSubject" rows="1" cols="50"><?php echo $post[2]; ?></textarea>;
+        <br />
+        <textarea name="postBody" rows="10" cols="50"><?php echo $post[3]; ?></textarea>;
+        <br />
+        Posted: <?php echo $post[6]; ?>
+        <br />
+        Status: <?php 
             if($post[9]){
-                echo "true\" checked";
+                echo "Posted";
             }
             else{
-                echo "false\"";
+                echo "Awaiting Review";
+        ?>
+        <br /><br />
+        <button type="submit">Approve Post</button>
+        <?php
             }
-            echo " />";
-            echo "<br /><br /><input type=\"submit\" value=\"Save\" />";
-            echo "</form>";
-
-        echo "<a href=\"postAdmin.php\">Back</a>";
-
-
-
-
+        ?>
+    </form>
+    <a href="postAdmin.php">Back</a>
+    
+<?php
     require_once('footer.php');
-
 ?>
