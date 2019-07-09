@@ -1,11 +1,12 @@
+<?php
+    //
+    //
+    //
+    //
+?>
+<?php require_once('config.php'); ?>
+
 <!DOCTYPE html>
-<!--
-    CST-126 Blog Project 1.0
-    Module - Index v1.0
-    Jackie Adair
-    7 Jul 2019
-    HTML for the Index page.
--->
 <html>
     <head>
         <title>Blog Project</title>
