@@ -3,7 +3,7 @@
     CST-126 Blog Project 1.0
     Module - Registration Page v3.0
     Jackie Adair
-    20 April 2019
+    // 7 Jun 2019
     PHP for the registration page for this blog.
     */
     require_once('myfuncs.php');

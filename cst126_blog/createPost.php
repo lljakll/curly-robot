@@ -3,7 +3,7 @@
     // CST-126 Blog Project 1.0
     // create Post Module version 1.0
     // Jackie Adair
-    // 20 April 2019
+    // 7 Jun 2019
     // Create a post and validate it
 
     require_once('myfuncs.php');
@@ -59,13 +59,4 @@
         }
 
     }
-
-
-
-
-    // check content for lanugage and size
-
-    // open database, write it to database
-
-
 ?>
