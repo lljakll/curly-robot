@@ -15,3 +15,4 @@
 
     <!-- Styling -->
     <link rel="stylesheet" href="static/css/public.css">
+

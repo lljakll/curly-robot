@@ -5,21 +5,19 @@
     //
 ?>
 <?php require_once('config.php'); ?>
+<?php require_once( ROOT_PATH . '/includes/myfuncs.php'); ?>
+<?php require_once( ROOT_PATH . '/includes/reglog.php'); ?>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Blog Project</title>
-        <link rel="stylesheet" type="text/css" href="css/main.css">
+
+<?php require_once( ROOT_PATH . "/includes/head.php"); ?>
+        <title>CST126 Blog</title>
     </head>
     <body>
-        <h1>Blog Project</h1>
-        <div class="baseForm">
-            <a href="login.html">Login</a><br />
-            <a href="register.html">Register</a><br />
-            <a href="createPost.html">Create Post</a><br />
-            <a href="logout.php">Logout</a>
+        <div class="container">
+            <?php include( ROOT_PATH . '/includes/navbar.php'); ?>
+            <div class="content">
+                    <h1>Blog Project</h1>
+       
+            </div>
         </div>
-
-    </body>
-</html>
+    <?php include( ROOT_PATH . '/includes/footer.php'); ?>
