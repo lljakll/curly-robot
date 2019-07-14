@@ -13,9 +13,9 @@
         <title>CST126 Blog</title>
     </head>
     <body>
-        <div class="container">
+        <div class="">
             <?php include( ROOT_PATH . '/includes/navbar.php'); ?>
-            <div class="content">
+            <div class="">
                     <h1>Blog Project</h1>
        
             </div>
