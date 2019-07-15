@@ -8,7 +8,7 @@
 
 <?php include('config.php'); ?>
 
-<?php include( ROOT_PATH . '/includes/reglog.php'); ?>
+<?php include( ROOT_PATH . '/includes/registerLoginFunctions.php'); ?>
 <?php include( ROOT_PATH . '/includes/head.php'); ?>
 
     <title>CST126 BLOG Login</title>

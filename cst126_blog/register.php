@@ -8,7 +8,7 @@
 
 <?php include('config.php'); ?>
 
-<?php include( ROOT_PATH . '/includes/reglog.php'); ?>
+<?php include( ROOT_PATH . '/includes/registerLoginFunctions.php'); ?>
 <?php include( ROOT_PATH . '/includes/head.php'); ?>
 
     <title>CST126 BLOG Login</title>
@@ -28,6 +28,14 @@
                 <input type="password" name="password" value="" placeholder="Password">
                 <input type="password" name="password2" value="" placeholder="Confirm Password">
         </div>
+
+        <form action="register.php">
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" class="form-control" id="email">
+            </div>
+            <button type="submit" clas="btn btn-primary">Submit</button>
+        </form>
         
     </div>
     <?php include( ROOT_PATH . '/includes/footer.php'); ?>
