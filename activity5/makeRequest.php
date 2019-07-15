@@ -5,4 +5,9 @@
 
     echo "id = " . $id . " | mode = " . $mode;
 
+    $id = 10;
+    $mode = 99;
+
+    echo "<br> new id = " . $id . " | new mode = " . $mode;
+
 ?>
