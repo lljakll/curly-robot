@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm bg-dark">
+<div class="navbar navbar-expand-sm bg-dark fixed-top">
     <a href="index.php"><h3>CST126 Blog</h3></a>
     <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
@@ -13,4 +13,4 @@
             }
         ?>
     </ul>
-</nav>
+</div>
