@@ -16,7 +16,7 @@
 <body>
     <div class="container">
     <?php include( ROOT_PATH . '/includes/navbar.php'); ?>
-        <form action="register.php">
+        <form method="post" action="register.php">
             <?php include(ROOT_PATH . '/includes/errors.php') ?>
             <div class="row">
                 <div class="col-sm-4"></div>
@@ -26,7 +26,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text">Email</div>
                         </div>
-                        <input type="email" class="form-control" id="email" value="<?php echo $email; ?>">
+                        <input type="email" class="form-control" name="email" value="<?php echo $email; ?>">
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text">Username</div>
                         </div>
-                        <input type="text" class="form-control" id="username" value="<?php echo $username; ?>">
+                        <input type="text" class="form-control" name="username" value="<?php echo $username; ?>">
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text">First</div>
                         </div>
-                    <input type="text" class="form-control" id="firstName" value="<?php echo $firstName; ?>">
+                    <input type="text" class="form-control" name="firstName" value="<?php echo $firstName; ?>">
                     </div>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text">Last</div>
                         </div>
-                        <input type="text" class="form-control" id="lastName" value="<?php echo $lastName; ?>">
+                        <input type="text" class="form-control" name="lastName" value="<?php echo $lastName; ?>">
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text">Password</div>
                         </div>
-                        <input type="password" class="form-control" id="password" value="">
+                        <input type="password" class="form-control" name="password" value="">
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text">Confirm</div>
                         </div>
-                        <input type="password" class="form-control" id="password2" value="">
+                        <input type="password" class="form-control" name="password2" value="">
                     </div>
                 </div>
             </div>

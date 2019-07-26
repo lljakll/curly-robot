@@ -5,7 +5,6 @@
     //
 ?>
 <?php require_once('config.php'); ?>
-<?php require_once( ROOT_PATH . '/includes/myfuncs.php'); ?>
 <?php //require_once( ROOT_PATH . '/includes/registerLoginFunctions.php'); ?>
 
 
@@ -15,6 +14,7 @@
     <body>
         <div class="container">
             <?php include( ROOT_PATH . '/includes/navbar.php'); ?>
+            <?php include( ROOT_PATH . '/includes/messages.php'); ?>
             <div class="">
                     <h1>Blog Project</h1>
        

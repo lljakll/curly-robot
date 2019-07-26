@@ -1,62 +1,51 @@
+<?php require_once('config.php'); ?>
+<?php include( ROOT_PATH . '/includes/publicFunctions.php'); ?>
+<?php include( ROOT_PATH . '/includes/head.php'); ?>
+
 <?php
+    // Check role and redirect accordingly
+    if (!in_array($_SESSION['user']['role'], [1, 2])){
+        $_SESSION['message'] = "You are Not Authorized access to this screen!";
+        header('location: index.php');
+        exit(0);
+    } else {
+?>
+    <div class="container">
+    <?php include( ROOT_PATH . '/includes/navbar.php'); ?>
+        <form method="post" action="createPost.php">
+            <?php include(ROOT_PATH . '/includes/errors.php') ?>
 
-    // CST-126 Blog Project 1.0
-    // create Post Module version 1.0
-    // Jackie Adair
-    // 7 Jun 2019
-    // Create a post and validate it
+            <div class="row">
+                <div class="col-sm-*">
+                    <div class="input-group mb-2 mr-sm-2">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" id="title" name="title" value="<?php echo $title; ?>">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    require_once('myfuncs.php');
-    // check login status
-    if(!getUserId()){ // if not logged in
-        $message = "You must be logged in to post to this Blog.<br /><br />
-        <a href=\"login.html\">Login</a>";
-        include('loginFailed.php');
+            <div class="row">
+                <div class="col-sm-*">
+                    <div class="input-group mb-2 mr-sm-2">
+                        <div class="form-group">
+                            <label for="title">Post</label>
+                            <textarea class="form-control" id="post" name="post" rows=3><?php echo $post; ?></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-*">
+                    <button type="submit" class="btn btn-primary" name="submitPost">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+     
+<?php
     }
-    else{
-        // receive content from form
-        $postSubject = $_POST["postSubject"];
-        $postBody = $_POST["postBody"];
-        $userID = getUserId();
-
-        if(strlen($postSubject)>49){ // if subject is 50+ char
-            $message = "The Subject is too long.  It must be less than 50 characters.<br /><br />
-            <a href=\"createPost.html\">createPost</a>";
-            include('loginFailed.php');
-        }
-        else{
-            if(strlen($postBody)>3000){ // if body is 3k+ char
-                $message = "The Body is too long.  It must be less than 3000 characters.<br /><br />
-                <a href=\"createPost.html\">createPost</a>";
-                include('loginFailed.php');
-            }
-            else{
-                if(stristr($postSubject, "badword")){ // check the subject for badwords
-                    $message = "There are banned words in the subject.<br /><br />
-                    <a href=\"createPost.html\">createPost</a>";
-                    include('loginFailed.php');
-                }
-                else{
-                    if(stristr($postBody, "badword")){ // check the body for badwords
-                        $message = "There are banned words in the Body.<br /><br />
-                        <a href=\"createPost.html\">createPost</a>";
-                        include('loginFailed.php');
-                    }
-                    else{
-                        $db = dbConnect();
-                        $query = "INSERT INTO posts (userID, postSubject, postBody, posted) VALUES ('$userID', '$postSubject', '$postBody', '1')";
-
-                        if ($db->query($query) === TRUE){
-                            echo "Successful Post<br /><br />";
-                            echo "<a href=\"index.html\">Home</a>";
-                        }
-                        else{
-                            echo "Error: " . $query . "<br />" . $db->error;
-                        }
-                    }
-                }
-            }
-        }
-
-    }
+    include( ROOT_PATH . '/includes/footer.php');
 ?>

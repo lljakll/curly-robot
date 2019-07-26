@@ -16,8 +16,8 @@
 <body>
     <div class="container">
         <?php include( ROOT_PATH . '/includes/navbar.php'); ?>
-        <form action="login.php">
-
+        <form method="post" action="login.php">
+            <?php include(ROOT_PATH . '/includes/errors.php') ?>   
             <div class="row">
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4">
@@ -26,7 +26,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text">Username</div>
                         </div>
-                        <input type="text" class="form-control" id="username" value="<?php echo $username; ?>">
+                        <input type="text" class="form-control" name="username" value="<?php echo $username; ?>">
                     </div>
                 </div> 
             </div>
@@ -39,7 +39,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text">Password</div>
                         </div>
-                        <input type="password" class="form-control" id="password" value="">
+                        <input type="password" class="form-control" name="password" value="">
                     </div>
                 </div> 
             </div>
