@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2019 at 07:42 PM
+-- Generation Time: Jul 27, 2019 at 01:07 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -124,10 +124,13 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `email`, `password`, `role`) VALUES
-(1, 'admin', 'admin', 'admin', 'admin@tr.com', '21232f297a57a5a743894a0e4a801fc3', '1'),
-(2, 'user1', 'user1', 'user1', 'user1@tr.com', '24c9e15e52afc47c225b757e7bee1f9d', '6'),
-(3, 'user2', 'user2', 'user2', 'user2@tr.com', '7e58d63b60197ceb55a1c487989a3720', '6');
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `email`, `password`, `role`, `created`, `modified`) VALUES
+(1, 'admin', 'admin', 'admin', 'admin@tr.com', '21232f297a57a5a743894a0e4a801fc3', '1', '2019-07-25 17:47:45', '2019-07-25 17:47:45'),
+(2, 'user1', 'user1', 'user1', 'user1@tr.com', '24c9e15e52afc47c225b757e7bee1f9d', '2', '2019-07-25 17:47:45', '2019-07-26 17:44:06'),
+(3, 'user2', 'user2', 'user2', 'user2@tr.com', '7e58d63b60197ceb55a1c487989a3720', '3', '2019-07-25 17:47:45', '2019-07-26 18:35:49'),
+(4, 'user3', 'user3', 'user3', 'user3@t.com', '92877af70a45fd6a2ed7fe81e1236b78', '4', '2019-07-26 18:34:34', '2019-07-26 18:35:54'),
+(5, 'user4', 'user4', 'user4', 'user4@tr.com', '3f02ebe3d7929b091e3d8ccfde2f3bc6', '5', '2019-07-26 18:35:28', '2019-07-26 18:35:57'),
+(6, 'user5', 'user5', 'user5', 'user5@tr.com', '0a791842f52a0acfbb3a783378c066b8', '6', '2019-07-26 18:36:43', '2019-07-26 18:36:43');
 
 --
 -- Indexes for dumped tables
@@ -138,6 +141,19 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `email`, `pass
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `post_tags`
+--
+ALTER TABLE `post_tags`
+  ADD KEY `post_id` (`post_id`),
+  ADD KEY `tag_id` (`tag_id`);
+
+--
+-- Indexes for table `tags`
+--
+ALTER TABLE `tags`
+  ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
 -- Indexes for table `users`
@@ -156,10 +172,27 @@ ALTER TABLE `posts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `tags`
+--
+ALTER TABLE `tags`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `post_tags`
+--
+ALTER TABLE `post_tags`
+  ADD CONSTRAINT `post_tags_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `post_tags_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
